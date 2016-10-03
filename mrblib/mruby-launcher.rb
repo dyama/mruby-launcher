@@ -14,3 +14,4 @@ basedir = File.dirname(path)
 
 end
 
+exit
