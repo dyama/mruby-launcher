@@ -1,11 +1,16 @@
-basedir = File.dirname(__FILE__)
+path = command_name.gsub "\\", "/"
+
+basedir = File.dirname(path)
+
 [basedir, "#{basedir}/etc"].each do |t|
+
   next unless File.exist? t
+
   Dir.open(t) do |dir|
     dir.each do |file|
-      if /rc\.rb$/ =~ file
-        load "#{t}/#{file}"
-      end
+      load "#{t}/#{file}" if /rc\.rb$/ =~ file
     end
   end
+
 end
+
